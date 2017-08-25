@@ -25,6 +25,7 @@
     "serialport": "^5.0.0"
   },
   "devDependencies": {
-    "jest": "^20.0.4"
+    "jest": "^20.0.4",
+    "sinon": "^3.2.1"
   }
 }

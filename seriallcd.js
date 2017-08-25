@@ -1,5 +1,7 @@
 'use strict'
 
+const util = require('util')
+const EventEmitter = require('events').EventEmitter
 const SerialPort = require('serialport')
 
 // Lib constants
@@ -19,9 +21,23 @@ function AdafruitSerialLCD(opts) {
   if(!BAUD_RATES[opts.baud]){
     throw new Error('Invalid baud rate for serial LCD. Valid values between 1200-115200 accepted')
   }
+
+  if(!opts.port){
+    throw new Error('Port is required in options object')
+  }
+
   this.baud = opts.baud
   this.serialport = new SerialPort(opts.port, {
+    autoOpen: false,
     baudRate: this.baud
+  })
+}
+
+util.inherits(AdafruitSerialLCD, EventEmitter)
+
+AdafruitSerialLCD.prototype.start = function(){
+  this.serialport.open().then(() => {
+    this.emit('ready')
   })
 }
 
