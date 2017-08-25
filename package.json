@@ -1,18 +1,18 @@
 {
-  "name": "adafruit-serial-lcd-node",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "adafruit-serial-lcd",
+  "version": "0.0.1",
+  "description": "Library for controlling the Adafruit Serial LCD backpack (https://www.adafruit.com/product/781)",
+  "main": "seriallcd.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified (working on it!)\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nodebotanist/adafruit-serial-lcd-node.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": ["Serial LCD", "Adafruit", "LCD"],
+  "author": "nodebotanist",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/nodebotanist/adafruit-serial-lcd-node/issues"
   },
