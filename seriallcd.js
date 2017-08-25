@@ -53,4 +53,12 @@ AdafruitSerialLCD.prototype.clear = function(){
   this.serialport.write([0xFE, 0x58])
 }
 
+AdafruitSerialLCD.prototype.setSize = function(opts){
+  this.serialport.write([0xFE, 0xD1].concat(opts))
+}
+
+AdafruitSerialLCD.prototype.moveCursor = function(coords){
+  this.serialport.write([0xFE, 0x47].concat(coords))
+}
+
 module.exports = AdafruitSerialLCD

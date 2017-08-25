@@ -8,8 +8,16 @@ let serialLCD = new AdafruitSerialLCD({
 })
 
 serialLCD.on('ready', () => {
-  serialLCD.print("Hello, World!\n")
-  setTimeout(serialLCD.clear.bind(serialLCD), 1000)
+  serialLCD.setSize([0x14, 0x05])
+  serialLCD.moveCursor([0x01, 0x01])
+  serialLCD.print("ABCDEFGHIJABCDEFGHIJ")
+  serialLCD.moveCursor([0x01, 0x02])
+  serialLCD.print("********************")
+  serialLCD.moveCursor([0x01, 0x03])
+  serialLCD.print("ABCDEFGHIJABCDEFGHIJ")
+  serialLCD.moveCursor([0x01, 0x04])
+  serialLCD.print("********************")
+  setTimeout(serialLCD.clear.bind(serialLCD), 10000)
 })
 
 serialLCD.start()
