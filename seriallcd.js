@@ -53,12 +53,13 @@ AdafruitSerialLCD.prototype.clear = function(){
   this.serialport.write([0xFE, 0x58])
 }
 
-AdafruitSerialLCD.prototype.setSize = function(opts){
-  this.serialport.write([0xFE, 0xD1].concat(opts))
+AdafruitSerialLCD.prototype.setSize = function(columns, rows){
+  // I don't know why I have to add 1 to row. It just doesn't work otherwise.
+  this.serialport.write([0xFE, 0xD1, columns || 0xFF, (rows + 1) || 0xFF])
 }
 
-AdafruitSerialLCD.prototype.moveCursor = function(coords){
-  this.serialport.write([0xFE, 0x47].concat(coords))
+AdafruitSerialLCD.prototype.moveCursor = function(column, row){
+  this.serialport.write([0xFE, 0x47, column || 0xFF, row || 0xFF])
 }
 
 module.exports = AdafruitSerialLCD
