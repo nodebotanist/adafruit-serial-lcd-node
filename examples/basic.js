@@ -8,3 +8,5 @@ let serialLCD = new AdafruitSerialLCD({
 })
 
 serialLCD.print("Hello, World!\n")
+
+setTimeout(serialLCD.clear.bind(serialLCD), 1000)

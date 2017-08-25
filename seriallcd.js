@@ -13,4 +13,8 @@ AdafruitSerialLCD.prototype.print = function(output){
   this.serialport.write(output)
 }
 
+AdafruitSerialLCD.prototype.clear = function(){
+  this.serialport.write([0xFE, 0x58])
+}
+
 module.exports = AdafruitSerialLCD
