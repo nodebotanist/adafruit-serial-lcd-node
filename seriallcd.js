@@ -36,8 +36,12 @@ function AdafruitSerialLCD(opts) {
 util.inherits(AdafruitSerialLCD, EventEmitter)
 
 AdafruitSerialLCD.prototype.start = function(){
-  this.serialport.open().then(() => {
-    this.emit('ready')
+  this.serialport.open((err) => {
+    if(err){
+      this.emit('error', 'Error opening port: ', err)
+    } else {
+      this.emit('ready')
+    }
   })
 }
 

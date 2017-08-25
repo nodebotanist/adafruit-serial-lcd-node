@@ -7,6 +7,9 @@ let serialLCD = new AdafruitSerialLCD({
   baud: 9600
 })
 
-serialLCD.print("Hello, World!\n")
+serialLCD.on('ready', () => {
+  serialLCD.print("Hello, World!\n")
+  setTimeout(serialLCD.clear.bind(serialLCD), 1000)
+})
 
-setTimeout(serialLCD.clear.bind(serialLCD), 1000)
+serialLCD.start()
