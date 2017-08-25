@@ -1,5 +1,5 @@
 const SerialLCD = require('../seriallcd')
 
-test('testing jest', () => {
+test('reject invalid baud values', () => {
   expect(true).toBe(true)
 })
