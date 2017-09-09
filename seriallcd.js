@@ -62,4 +62,28 @@ AdafruitSerialLCD.prototype.moveCursor = function(column, row){
   this.serialport.write([0xFE, 0x47, column || 0xFF, row || 0xFF])
 }
 
+AdafruitSerialLCD.prototype.cursorHome = function(){
+  this.moveCursor(1,1)
+}
+
+AdafruitSerialLCD.prototype.cursorForward = function(){
+  this.serialport.write([0xFE, 0x4D])
+}
+
+AdafruitSerialLCD.prototype.cursorBack = function(){
+  this.serialport.write([0xFE, 0x4C])
+}
+
+AdafruitSerialLCD.prototype.cursorUnderline = function(){
+  this.serialport.write([0xFE, 0x4A])
+}
+
+AdafruitSerialLCD.prototype.cursorBlock = function(){
+  this.serialport.write([0xFE, 0x53])
+}
+
+AdafruitSerialLCD.prototype.cursorOff = function(){
+  this.serialport.write([0xFE, 0x54, 0xFE, 0x4B])
+}
+
 module.exports = AdafruitSerialLCD
