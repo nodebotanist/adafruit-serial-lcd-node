@@ -49,17 +49,21 @@ AdafruitSerialLCD.prototype.print = function(output){
   this.serialport.write(output)
 }
 
+AdafruitSerialLCD.prototype.setBacklightColor = function(opts){
+  this.serialport.write([0xFE, 0xD0, opts.red || 0x00, opts.green || 0x00, opts.blue || 0x00])
+}
+
 AdafruitSerialLCD.prototype.clear = function(){
   this.serialport.write([0xFE, 0x58])
 }
 
 AdafruitSerialLCD.prototype.setSize = function(columns, rows){
   // I don't know why I have to add 1 to row. It just doesn't work otherwise.
-  this.serialport.write([0xFE, 0xD1, columns || 0xFF, (rows + 1) || 0xFF])
+  this.serialport.write([0xFE, 0xD1, columns || 0x00, (rows + 1) || 0x00])
 }
 
 AdafruitSerialLCD.prototype.moveCursor = function(column, row){
-  this.serialport.write([0xFE, 0x47, column || 0xFF, row || 0xFF])
+  this.serialport.write([0xFE, 0x47, column || 0x00, row || 0x00])
 }
 
 AdafruitSerialLCD.prototype.cursorHome = function(){
