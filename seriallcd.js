@@ -53,6 +53,14 @@ AdafruitSerialLCD.prototype.setBacklightColor = function(opts){
   this.serialport.write([0xFE, 0xD0, opts.red || 0x00, opts.green || 0x00, opts.blue || 0x00])
 }
 
+AdafruitSerialLCD.prototype.setBrightness = function(brightness){
+  his.serialport.write([0xFE, 0x99, brightness || 0x00])
+}
+
+AdafruitSerialLCD.prototype.setContrast = function(contrast){
+  his.serialport.write([0xFE, 0x50, contrast || 0x00])
+}
+
 AdafruitSerialLCD.prototype.clear = function(){
   this.serialport.write([0xFE, 0x58])
 }

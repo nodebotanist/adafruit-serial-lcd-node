@@ -9,6 +9,8 @@ let serialLCD = new AdafruitSerialLCD({
 
 serialLCD.on('ready', () => {
   serialLCD.setSize(20, 4)
+  serialLCD.setBrightness(100)
+  serialLCD.setContrast(220)
   serialLCD.setBacklightColor({
     red: 243,
     green: 0,
