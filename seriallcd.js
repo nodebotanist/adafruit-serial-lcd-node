@@ -98,4 +98,16 @@ AdafruitSerialLCD.prototype.cursorOff = function(){
   this.serialport.write([0xFE, 0x54, 0xFE, 0x4B])
 }
 
+AdafruitSerialLCD.prototype.autoscroll = function(on){
+  if(on){
+    this.serialport.write([0xFE, 0x51])
+  } else {
+    this.serialport.write([0xFE, 0x52])    
+  }
+}
+
+AdafruitSerialLCD.prototype.changeSplashScreen = function(text) {
+  this.serialport.write([0xFE, 0x40, text])
+}
+
 module.exports = AdafruitSerialLCD
