@@ -110,4 +110,9 @@ AdafruitSerialLCD.prototype.changeSplashScreen = function(text) {
   this.serialport.write([0xFE, 0x40, text])
 }
 
+AdafruitSerialLCD.prototype.setDigitalOutputPin = function(pin, value){
+  let subcommand = value ? 0x57 : 0x56
+  this.serialport.write([0xFE, subcommand, (pin || 0x00)])
+}
+
 module.exports = AdafruitSerialLCD
